@@ -1,0 +1,14 @@
+
+{% load static %}
+{% block title %} Registro {% endblock %}
+{% block contenido %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input class="form-control" type="submit" value="Registrarse">
+    </form>
+
+
+{% endblock %}
