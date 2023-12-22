@@ -6,10 +6,6 @@ from .forms import RegistroForm
 from django.urls import reverse_lazy
 from .models import Usuario
 
-class Registro(CreateView):
-    form_class = RegistroForm
-    success_url = reverse_lazy('login')
-    template_name = 'usuarios/registro.html'
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -39,7 +35,10 @@ class Registro(CreateView):
         return redirect('login')
 
 
-
+    class Registro(CreateView):
+        form_class = RegistroForm
+        success_url = reverse_lazy('login')
+    template_name = 'usuarios/registro.html'
     
 
 
