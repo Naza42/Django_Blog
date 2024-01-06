@@ -6,14 +6,8 @@ from .forms import RegistroForm
 from django.urls import reverse_lazy
 from .models import Usuario
 
-
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.save()
-        return super().form_valid(form)
-
 #Vista para el inicio de sesion
-    def user_login(request):
+def user_login(request):
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
@@ -30,16 +24,12 @@ from .models import Usuario
 
 
 #Vista para el cierre de sesion
-    def user_logout(request):
+def user_logout(request):
         logout(request)
         return redirect('login')
 
 
-    class Registro(CreateView):
-        form_class = RegistroForm
-        success_url = reverse_lazy('login')
-    template_name = 'usuarios/registro.html'
-    
-
-
-
+def Registro(request):
+    if request.method == 'POST':
+        form = RegistroForm()
+        return  render(request, '/usuarios/registro.html', {'form': form})
