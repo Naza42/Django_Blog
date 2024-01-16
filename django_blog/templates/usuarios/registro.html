@@ -2,9 +2,10 @@
 {% load static %}
 {% block title %} Registro {% endblock %}
 {% block contenido %}
+<link rel="stylesheet" href= "{% static 'css/registro.css' %}"/>
 
 
-<section class="vh-100 bg-image"
+<section class="vh-100 bg-image">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -13,10 +14,47 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Registrarse</h2>
 
-              <form action="{% url 'registro' %}" method="POST">
+              <form method="GET">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Registrarse">
+                <div class="form-line mb-4">
+                  <input type="text" name="first_name" id="form3Example1cg" class="form-control form-control-lg" placeholder="Nombre" />
+                </div>
+                
+                <div class="form-line mb-4">
+                  <input type="text" name="last_name" id="form3Example1cg" class="form-control form-control-lg" placeholder="Apellido" />
+                </div>
+
+                <div class="form-line mb-4">
+                  <input type="text" name="username" id="form3Example1cg" class="form-control form-control-lg" placeholder="Username" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Email" />
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <input type="password" name="password1" id="form3Example4cg" class="form-control form-control-lg" placeholder="Contraseña" />
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <input type="password" name="password2" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Repita su contraseña" />
+                </div>
+                
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" method="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrarse</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Ya tiene cuenta? <a href={% url 'login' %}
+                    class="fw-bold text-body"><u>Logueese</u></a></p>
+
               </form>
 
             </div>

@@ -29,7 +29,12 @@ def user_logout(request):
         return redirect('login')
 
 
-def Registro(request):
+def formulario(request):
     if request.method == 'POST':
-        form = RegistroForm()
-        return  render(request, '/usuarios/registro.html', {'form': form})
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # hacer algo después de guardar los datos del usuario
+    else:
+        form = UsuarioForm()
+    return render(request, 'formulario.html', {'form': form})
